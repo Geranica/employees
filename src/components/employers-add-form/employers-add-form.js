@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { nanoid } from "nanoid";
+import FormValidationError from "../app-form-validation-error/app-form-validation-error";
+
 import "./employers-add-form.css";
 
 class EmployersAddForm extends Component {
@@ -19,17 +21,23 @@ class EmployersAddForm extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const person = {
-      name: this.state.name,
-      salary: this.state.salary,
-      increase: false,
-      id: nanoid(),
-    };
-    this.props.onAdd(person);
-    this.setState(() => ({
-      name: "",
-      salary: "",
-    }));
+
+    if (this.state.name.length < 3 || !this.state.salary) {
+      return false;
+    } else {
+      const person = {
+        name: this.state.name,
+        salary: this.state.salary,
+        increase: false,
+        rise: false,
+        id: nanoid(),
+      };
+      this.props.onAdd(person);
+      this.setState(() => ({
+        name: "",
+        salary: "",
+      }));
+    }
   };
 
   render() {
@@ -44,14 +52,14 @@ class EmployersAddForm extends Component {
             value={name} // контролируемый элемент
             type="text"
             name="name"
-            className="form-control new-post-label"
+            className= 'form-control new-post-label'
             placeholder="Как его зовут?"
             onChange={this.onValueChange}
           />
           <input
             value={salary} // контролируемый элемент
-            type="number"
-            className="form-control new-post-label"
+            type="text"
+            className='form-control new-post-label'
             placeholder="З/П в $?"
             onChange={this.onValueChange}
             name="salary"
