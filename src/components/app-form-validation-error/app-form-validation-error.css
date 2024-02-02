@@ -1,5 +1,7 @@
 .add-error {
    margin-top: 3px;
-   color: red;
+   color: #ff6b6b;
+   transition: all 0.3s ease;
+   font-size: 14px;
 
 }

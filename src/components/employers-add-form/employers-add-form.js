@@ -28,20 +28,18 @@ class EmployersAddForm extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const errors = this.state.errors;
-
     if (this.state.name.length < 3) {
       this.setState(() => ({
         errors: {
           nameError: true,
-          nameErrorText: errors.nameErrorText,
+          nameErrorText: "Не менее 3 символов!",
         },
       }));
     } else if (!this.state.salary) {
       this.setState(() => ({
         errors: {
           salaryError: true,
-          salaryErrorText: errors.salaryErrorText,
+          salaryErrorText: "Введите значение!",
         },
       }));
     } else {
@@ -64,30 +62,22 @@ class EmployersAddForm extends Component {
         },
       }));
     }
-
-    //=====================
-
-    /* if (this.state.name.length < 3 || !this.state.salary) {
-      return false;
-    } else {
-      const person = {
-        name: this.state.name,
-        salary: this.state.salary,
-        increase: false,
-        rise: false,
-        id: nanoid(),
-      };
-      this.props.onAdd(person);
-      this.setState(() => ({
-        name: "",
-        salary: "",
-      }));
-    } */
   };
 
   render() {
     const { name, salary, errors } = this.state;
     const { onSubmit } = this;
+
+    let inputClassName1 = "form-control new-post-label";
+    let inputClassName2 = "form-control new-post-label";
+
+    if (errors.nameError) {
+      inputClassName1 += ' red-border'
+    }
+
+    if (errors.salaryError) {
+      inputClassName2 += ' red-border'
+    }
 
     return (
       <div className="app-add-form">
@@ -98,7 +88,7 @@ class EmployersAddForm extends Component {
               value={name} // контролируемый элемент
               type="text"
               name="name"
-              className="form-control new-post-label"
+              className={inputClassName1}
               placeholder="Как его зовут?"
               onChange={this.onValueChange}
             />
@@ -110,7 +100,7 @@ class EmployersAddForm extends Component {
             <input
               value={salary} // контролируемый элемент
               type="text"
-              className="form-control new-post-label"
+              className={inputClassName2}
               placeholder="З/П в $?"
               onChange={this.onValueChange}
               name="salary"
