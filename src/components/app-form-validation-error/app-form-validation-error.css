@@ -1,7 +1,17 @@
-.add-error {
-   margin-top: 3px;
-   color: #ff6b6b;
-   transition: all 0.3s ease;
-   font-size: 14px;
+@keyframes errorFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+.add-error {
+  margin-top: 3px;
+  color: #ff6b6b;
+  animation: errorFadeIn 0.3s ease;
+  font-size: 14px;
 }

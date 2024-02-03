@@ -25,7 +25,7 @@
 }
 
 .red-border {
-   border: 2px solid #ff6b6b; /* Цвет границы при ошибке */
-   box-shadow: 0 0 15px rgba(255, 107, 107, 0.9); /* Более выразительная тень при ошибке */
-   transition: box-shadow 0.3s ease; 
+   border: 2px solid #ff6b6b;
+   box-shadow: 0 0 15px rgba(255, 107, 107, 0.9);
+   transition: border-color 0.3s ease, box-shadow 0.3s ease; 
 }
