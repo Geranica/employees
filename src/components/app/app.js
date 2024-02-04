@@ -95,7 +95,7 @@ class App extends Component {
     });
   };
 
-  onUpdateSearch = (term) => {
+  onUpdateSearch = (term) => { //Для получения данных от дочернего компонента
     this.setState({ term: term });
   };
 

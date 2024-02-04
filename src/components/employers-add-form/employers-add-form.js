@@ -2,7 +2,8 @@ import { Component } from "react";
 import { nanoid } from "nanoid";
 import FormValidationError from "../app-form-validation-error/app-form-validation-error";
 
-import "./employers-add-form.css";
+import './employers-add-form.scss';
+//import "./employers-add-form.css";
 
 class EmployersAddForm extends Component {
   constructor(props) {
